@@ -1,0 +1,9 @@
+{
+  "name": "skills",
+  "description": "A set of personal Claude Code skills.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Swaroop Sethumadhavan",
+    "email": "swaroop.striker@gmail.com"
+  }
+}
