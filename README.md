@@ -1,5 +1,7 @@
 # skills
 
+[![skills.sh](https://skills.sh/b/swaroopsm/skills)](https://skills.sh/swaroopsm/skills)
+
 A set of personal [Claude Code](https://claude.com/claude-code) skills.
 
 ## Skills
