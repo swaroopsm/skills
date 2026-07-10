@@ -2,7 +2,7 @@
 name: git-commit
 description: Create a git commit with an issue-number prefix and a plain-language title, using conventional-commits type/scope in the body. Flags breaking or attention-needed changes in the title. Presents 3 message options for the user to pick from before committing. Use when the user says "gc" or "commit", "commit this", "make a commit", "commit my changes", or otherwise asks to commit the current changes.
 user-invocable: false
-allowed-tools: Bash(git branch *) Bash(git log *) Bash(git diff *) Bash(git status *)
+allowed-tools: Bash(git branch *) Bash(git log *) Bash(git diff *) Bash(git status *) Bash(git add *) Bash(git commit *)
 ---
 
 # Git Commit
@@ -102,10 +102,18 @@ still on v1 will get a 410 after this deploy; update client
 integrations to use /v2/login before merging.
 ```
 
-If there are no staged changes (`git diff --cached --stat` is empty), tell the user instead of committing — don't stage files on their behalf unless they've asked for that separately.
+If there are no staged changes (`git diff --cached --stat` is empty), **don't commit and don't stage silently.** First check whether there are any unstaged/untracked changes (`git status --short`):
+- **If there's nothing to commit at all**, tell the user and stop.
+- **If there are unstaged or untracked changes**, ask for confirmation with the `AskUserQuestion` tool (selectable, so the user can reject in one click) before staging. List what would be staged — added, modified, and deleted files (`git add -A` semantics) — and offer:
+  - **Stage all and continue** — run `git add -A`, then proceed with the commit.
+  - **Cancel** — stop without staging or committing.
+
+  Only stage after the user picks "Stage all and continue." If they cancel, stop.
 
 Run the commit with:
 ```
 git commit -m "[<issue-number>]: <title>" -m "Type: <type>(<scope>)" -m "<optional body text>"
 ```
 Use separate `-m` flags (as above) rather than embedded `\n`, so the blank-line separation between title, type, and body is preserved correctly.
+
+**Never push to the remote after committing.** This skill only creates the commit locally — do not run `git push` (or otherwise publish the commit), even if it seems like the next step. Leave pushing to the user.
