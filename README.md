@@ -2,6 +2,16 @@
 
 A set of personal [Claude Code](https://claude.com/claude-code) skills.
 
+## Skills
+
+| Skill | What it does | Triggers |
+| ----- | ------------ | -------- |
+| [`git-commit`](git-commit/README.md) | Commit with an issue-number prefix and conventional-commits body; offers 3 title candidates. | `gc`, `commit` |
+| [`github-pr`](github-pr/README.md) | Open/update a draft PR with an issue-prefixed title and reviewer-focused body; preserves bot/human edits. | `pr`, `open a pr`, `update the pr` |
+| [`jira-start`](jira-start/README.md) | Fetch a JIRA ticket, branch off the latest base, self-assign and move to in-progress. | `jira:<PROJ-123>`, `start jira task: <PROJ-123>` |
+
+Each skill's README has a mermaid flow diagram of how it works.
+
 ## Install
 
 ```bash
