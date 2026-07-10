@@ -1,6 +1,6 @@
 ---
 name: jira-start
-description: Start work on a JIRA ticket — fetch it via the JIRA MCP, create/switch to a branch named <ticket>-<feature> off the freshly-fetched default branch, and self-assign + move to in-progress when unassigned. Use when the user says "jira:<PROJ-123>", "start jira task: <PROJ-123>", "start <PROJ-123>", "pick up <PROJ-123>", "work on <PROJ-123>", or otherwise gives a JIRA ticket to begin.
+description: 'Start work on a JIRA ticket — fetch it via the JIRA MCP, create/switch to a branch named <ticket>-<feature> off the freshly-fetched default branch, and self-assign + move to in-progress when unassigned. Use when the user says "jira:<PROJ-123>", "start jira task: <PROJ-123>", "start <PROJ-123>", "pick up <PROJ-123>", "work on <PROJ-123>", or otherwise gives a JIRA ticket to begin.'
 user-invocable: false
 allowed-tools: Bash(git fetch *) Bash(git checkout *) Bash(git switch *) Bash(git branch *) Bash(git status *) Bash(git rev-parse *) Bash(git remote *) Bash(git symbolic-ref *)
 ---
